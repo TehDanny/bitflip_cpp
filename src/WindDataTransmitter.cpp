@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 		std_msgs::String msg;
 
 	    std::stringstream ss;
-	    ss << rand() % 10 + 2 << " km/h";		// Random number between 2 and 10
+	    ss << rand() % 9 + 2 << " km/h";		// Random number between 2 and 10
 	    msg.data = ss.str();
 
 	    wind_data_topic_pub.publish(msg);
