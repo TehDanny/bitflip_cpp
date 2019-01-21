@@ -196,3 +196,12 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+# Build wind_data_transmitter and average_wind_calculator
+add_executable(wind_data_transmitter src/WindDataTransmitter.cpp)
+target_link_libraries(wind_data_transmitter ${catkin_LIBRARIES})
+add_dependencies(wind_data_transmitter bitflip_cpp_generate_messages_cpp)
+
+add_executable(average_wind_calculator src/AverageWindCalculator.cpp)
+target_link_libraries(average_wind_calculator ${catkin_LIBRARIES})
+add_dependencies(average_wind_calculator bitflip_cpp_generate_messages_cpp)
