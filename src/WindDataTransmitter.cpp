@@ -1,6 +1,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include <sstream>
+#include <stdlib.h>
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "wind_data_transmitter");
@@ -13,11 +14,13 @@ int main(int argc, char **argv) {
 
 	// Add a date object here
 
+	srand(seed);
+
 	while (ros::ok()) {
 		std_msgs::String msg;
 
 	    std::stringstream ss;
-	    ss << "hello world ";		// Replace hello world with a generated number
+	    ss << rand() % 10 + 2 << " km/h";		// Random number between 2 and 10
 	    msg.data = ss.str();
 
 	    wind_data_topic_pub.publish(msg);
