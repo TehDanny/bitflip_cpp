@@ -2,7 +2,7 @@
 #include "std_msgs/String.h"
 #include <sstream>
 #include <stdlib.h>
-#include <time.h>
+#include <ctime>
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "wind_data_transmitter");
@@ -13,15 +13,21 @@ int main(int argc, char **argv) {
 
 	ros::Rate loop_rate(1);
 
-	// Add a date object here
-
 	srand(time(NULL));
+
+	time_t now = time(0);
+	
 
 	while (ros::ok()) {
 		std_msgs::String msg;
 
 	    std::stringstream ss;
-	    ss << rand() % 9 + 2;		// Random number between 2 and 10
+
+	    int windSpeed = rand() % 9 + 2;
+	    tm *ltm = localtime(&now);
+	    std::string formatedDate = std::to_string(ltm->tm_mday) + "/" + std::to_string(1 + ltm->tm_mon) + "/" + std::to_string(1900 + ltm->tm_year);
+
+	    ss << windSpeed << " " << formatedDate;
 	    msg.data = ss.str();
 
 	    wind_data_topic_pub.publish(msg);
