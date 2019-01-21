@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 
 	ros::Publisher wind_data_topic_pub = n.advertise<std_msgs::String>("wind_data_topic", 1000);
 
-	ros::Rate loop_rate(500);
+	ros::Rate loop_rate(1);
 
 	// Add a date object here
 
