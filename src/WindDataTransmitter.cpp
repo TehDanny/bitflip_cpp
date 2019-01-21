@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 		std_msgs::String msg;
 
 	    std::stringstream ss;
-	    ss << "hello world " << count;		// Replace hello world with a generated number
+	    ss << "hello world ";		// Replace hello world with a generated number
 	    msg.data = ss.str();
 
 	    wind_data_topic_pub.publish(msg);
