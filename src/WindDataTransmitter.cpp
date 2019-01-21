@@ -2,6 +2,7 @@
 #include "std_msgs/String.h"
 #include <sstream>
 #include <stdlib.h>
+#include <time.h>
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "wind_data_transmitter");
@@ -14,7 +15,7 @@ int main(int argc, char **argv) {
 
 	// Add a date object here
 
-	srand(seed);
+	srand(time(NULL));
 
 	while (ros::ok()) {
 		std_msgs::String msg;
