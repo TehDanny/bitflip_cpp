@@ -1,2 +1,2 @@
-int windSpeed
+int32 windSpeed
 string date
