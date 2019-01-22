@@ -1,8 +1,8 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include <sstream>
 #include <stdlib.h>
 #include <ctime>
+#include "bitflip_cpp/WindData.h"
 
 std::string SimulateDate(int dateCount)
 {
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 
 	ros::NodeHandle n;
 
-	ros::Publisher wind_data_topic_pub = n.advertise<std_msgs::String>("wind_data_topic", 1000);
+	ros::Publisher wind_data_topic_pub = n.advertise<bitflip_cpp::WindData>("wind_data_topic", 1000);
 
 	ros::Rate loop_rate(1);
 
@@ -39,15 +39,10 @@ int main(int argc, char **argv)
 
 	while (ros::ok())
 	{
-		std_msgs::String msg;
+		bitflip_cpp::WindData msg;
 
-	    std::stringstream ss;
-
-	    int windSpeed = rand() % 9 + 2;
-	    std::string date = SimulateDate(dateCount);
-
-	    ss << windSpeed << " " << date;
-	    msg.data = ss.str();
+	    msg.windSpeed = rand() % 9 + 2;
+	    msg.date = SimulateDate(dateCount);
 
 	    wind_data_topic_pub.publish(msg);
 

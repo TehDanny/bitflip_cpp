@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "bitflip_cpp/WindData.h"
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
