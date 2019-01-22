@@ -1,0 +1,2 @@
+int windSpeed
+string date
