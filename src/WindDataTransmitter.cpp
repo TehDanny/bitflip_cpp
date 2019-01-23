@@ -4,7 +4,7 @@
 #include <ctime>
 #include "bitflip_cpp/WindData.h"
 
-std::string SimulateDate(int dateCount)
+std::string simulateDate(int dateCount)
 {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		bitflip_cpp::WindData msg;
 
 	    msg.windSpeed = rand() % 9 + 2;
-	    msg.date = SimulateDate(dateCount);
+	    msg.date = simulateDate(dateCount);
 
 	    wind_data_topic_pub.publish(msg);
 
