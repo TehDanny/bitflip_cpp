@@ -4,6 +4,19 @@
 #include <ctime>
 #include "bitflip_cpp/WindData.h"
 
+int generateWindSpeed()
+{
+	int bitflipRandomizer = rand() % 10 ;
+	int min = -10000;
+	int max = 10000;
+
+	// 10% chance to cause a simulated bitflip exception
+	if (bitflipRandomizer == 0)
+		return min + (rand() % (max - min + 1));
+
+	return rand() % 9 + 2;
+}
+
 std::string simulateDate(int dateCount)
 {
 	time_t now = time(0);
@@ -37,11 +50,13 @@ int main(int argc, char **argv)
 	int dateCount = 0;
 	int windDataCount = 0;
 
+
+
 	while (ros::ok())
 	{
 		bitflip_cpp::WindData msg;
 
-	    msg.windSpeed = rand() % 9 + 2;
+	    msg.windSpeed = generateWindSpeed();
 	    msg.date = simulateDate(dateCount);
 
 	    wind_data_topic_pub.publish(msg);
