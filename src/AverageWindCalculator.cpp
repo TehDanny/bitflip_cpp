@@ -2,9 +2,11 @@
 #include "std_msgs/String.h"
 #include "bitflip_cpp/WindData.h"
 
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
+void chatterCallback(const bitflip_cpp::WindData msg)
 {
-  ROS_INFO("Message received: [%s]", msg->data.c_str());
+	// ROS_INFO("Message received. Wind speed: [%s], Date: [%s]", msg->windSpeed.c_str(), msg->date.c_str());
+	// The above line gives errors, so std::cout is used instead
+	std::cout << "Message received. Wind speed: " << msg.windSpeed << ", Date: " << msg.date << std::endl;
 }
 
 int main(int argc, char **argv)

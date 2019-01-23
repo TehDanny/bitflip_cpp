@@ -46,7 +46,10 @@ int main(int argc, char **argv)
 
 	    wind_data_topic_pub.publish(msg);
 
-	    ROS_INFO("%s", msg.data.c_str());
+	    // ROS_INFO("Wind speed: %s, Date: %s", msg.windSpeed, msg.date;
+	    // The above line gives errors, so std::cout is used instead
+
+	    std::cout << "Wind speed: " << msg.windSpeed << ", Date: " << msg.date << std::endl;
 
 	    ros::spinOnce();
 
