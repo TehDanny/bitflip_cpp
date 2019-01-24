@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="bitflip_cpp" name="publisher" type="wind_data_transmitter" required="true"/>
+	<node pkg="bitflip_cpp" name="subscriber" type="average_wind_calculator" output ="screen" required="true"/>
+</launch>
