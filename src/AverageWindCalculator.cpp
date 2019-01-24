@@ -7,7 +7,7 @@ void chatterCallback(const bitflip_cpp::WindData msg)
 	// ROS_INFO("Message received. Wind speed: [%s], Date: [%s]", msg->windSpeed.c_str(), msg->date.c_str());
 	// The above line gives errors, so std::cout is used instead
 	
-	std::cout << "Message received. Wind speed: " << msg.windSpeed << "km/h, Date: " << msg.date << std::endl;
+	std::cout << "#" << msg.id << " message received. Wind speed: " << msg.windSpeed << "km/h, Date: " << msg.date << std::endl;
 	
 	if (msg.windSpeed < 2 || msg.windSpeed > 10)
 	{

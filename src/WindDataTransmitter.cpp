@@ -47,15 +47,15 @@ int main(int argc, char **argv)
 
 	srand(time(NULL));
 	
+	int idCount = 0;
 	int dateCount = 0;
 	int windDataCount = 0;
-
-
 
 	while (ros::ok())
 	{
 		bitflip_cpp::WindData msg;
 
+		msg.id = idCount;
 	    msg.windSpeed = generateWindSpeed();
 	    msg.date = simulateDate(dateCount);
 
@@ -64,13 +64,14 @@ int main(int argc, char **argv)
 	    // ROS_INFO("Wind speed: %s, Date: %s", msg.windSpeed, msg.date;
 	    // The above line gives errors, so std::cout is used instead
 
-	    std::cout << "Wind speed: " << msg.windSpeed << ", Date: " << msg.date << std::endl;
+	    std::cout << "Id: " << msg.id << ", Wind speed: " << msg.windSpeed << ", Date: " << msg.date << std::endl;
 
 	    ros::spinOnce();
 
 	    loop_rate.sleep();
 	    
 	    windDataCount++;
+	    idCount++;
 	    
 		if (windDataCount == 10)
 		{
