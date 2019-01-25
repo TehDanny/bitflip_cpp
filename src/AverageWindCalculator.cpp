@@ -4,14 +4,14 @@
 
 void chatterCallback(const bitflip_cpp::WindData msg)
 {
-	// ROS_INFO("Message received. Wind speed: [%s], Date: [%s]", msg->windSpeed.c_str(), msg->date.c_str());
-	// The above line gives errors, so std::cout is used instead
-	
-	std::cout << "#" << msg.id << " message received. Wind speed: " << msg.windSpeed << "km/h, Date: " << msg.date << std::endl;
+	char dateCharArr[1024];
+	strcpy(dateCharArr, msg.date.c_str());
+
+	ROS_INFO("#%i message received. Wind speed: %i km/h, Date: %s.", msg.id, msg.windSpeed, dateCharArr);
 	
 	if (msg.windSpeed < 2 || msg.windSpeed > 10)
 	{
-		std::cout << "\033[1;31mBITFLIP EXCEPTION: Data is out of nominal bounds.\033[0m" << std::endl;
+		ROS_WARN("BITFLIP EXCEPTION AT #%i: Data is out of nominal bounds.", msg.id);
 	}
 }
 

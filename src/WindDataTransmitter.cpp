@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctime>
 #include "bitflip_cpp/WindData.h"
+#include <ros/console.h>
 
 int generateWindSpeed()
 {
@@ -61,10 +62,10 @@ int main(int argc, char **argv)
 
 	    wind_data_topic_pub.publish(msg);
 
-	    // ROS_INFO("Wind speed: %s, Date: %s", msg.windSpeed, msg.date;
-	    // The above line gives errors, so std::cout is used instead
+	    char dateCharArr[1024];
+		strcpy(dateCharArr, msg.date.c_str());
 
-	    std::cout << "Id: " << msg.id << ", Wind speed: " << msg.windSpeed << ", Date: " << msg.date << std::endl;
+	    ROS_INFO("Id: %i, Wind speed: %i, Date: %s.", msg.id, msg.windSpeed, dateCharArr);
 
 	    ros::spinOnce();
 
