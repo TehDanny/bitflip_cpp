@@ -208,4 +208,4 @@ add_executable(average_wind_calculator src/AverageWindCalculator.cpp)
 target_link_libraries(average_wind_calculator ${catkin_LIBRARIES})
 add_dependencies(average_wind_calculator bitflip_cpp_generate_messages_cpp)
 
-catkin_add_gtest(utest src/test/utest.cpp)
+catkin_add_gtest(utest test/utest.cpp)
